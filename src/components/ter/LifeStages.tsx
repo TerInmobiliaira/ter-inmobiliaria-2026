@@ -53,7 +53,10 @@ export function LifeStages({
               <button
                 type="button"
                 aria-pressed={active}
-                onClick={() => onChange(active ? null : id)}
+                onClick={() => {
+                  onChange(active ? null : id);
+                  scrollToId("proyectos");
+                }}
                 className={`group flex h-full min-h-11 w-full flex-col items-start gap-3 rounded-2xl border p-5 text-left transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring motion-reduce:transition-none ${
                   active
                     ? "border-primary bg-primary text-primary-foreground shadow-[var(--shadow-lift)]"
