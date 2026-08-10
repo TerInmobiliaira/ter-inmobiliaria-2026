@@ -94,7 +94,6 @@ export function Header() {
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
           className="grid size-11 place-items-center rounded-xl border border-border bg-card text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring lg:hidden"
         >
-          {open ? <Menu className="size-5 hidden" /> : null}
           {open ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
         </button>
       </div>
