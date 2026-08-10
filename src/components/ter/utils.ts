@@ -3,7 +3,10 @@ import { toast } from "sonner";
 export function scrollToId(id: string) {
   const el = document.getElementById(id);
   if (!el) return;
-  el.scrollIntoView({ behavior: "smooth", block: "start" });
+  const header = document.querySelector("header");
+  const offset = header ? header.getBoundingClientRect().height + 16 : 24;
+  const top = el.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top, behavior: "smooth" });
 }
 
 export function soon(label: string) {
