@@ -1,5 +1,6 @@
 import { Building2, Home, Sparkles, TrendingUp } from "lucide-react";
 import type { LifeStage } from "@/data/projects";
+import { scrollToId } from "./utils";
 
 const OPTIONS: { id: LifeStage; title: string; copy: string; Icon: typeof Home }[] = [
   {
