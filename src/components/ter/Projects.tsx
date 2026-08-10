@@ -1,4 +1,3 @@
-<<<<<<<<
 import { ArrowRight, Bed, MapPin, Ruler } from "lucide-react";
 import { formatPrice, type LifeStage, type Project } from "@/data/projects";
 import { scrollToId } from "./utils";
