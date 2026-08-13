@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { districts, projects } from "@/data/projects";
+import commonArea from "@/assets/common-area.jpg";
 
 interface Errors {
   name?: string;
@@ -34,22 +35,34 @@ export function ContactForm() {
   };
 
   return (
-    <section id="contacto" className="bg-ivory/60 py-16 lg:py-24">
+    <section id="contacto" className="relative isolate overflow-hidden py-16 lg:py-24">
+      <img
+        src={commonArea}
+        alt="Área común tipo rooftop de un edificio TER en Lima"
+        loading="lazy"
+        width={1600}
+        height={1008}
+        className="absolute inset-0 -z-20 size-full object-cover"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-black/55 lg:bg-[linear-gradient(to_right,rgb(0_0_0/0.62)_0%,rgb(0_0_0/0.45)_35%,rgb(0_0_0/0.12)_65%,transparent_85%)]"
+      />
       <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16">
         <div>
-          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-primary-foreground sm:text-4xl">
             Cuéntanos qué depa estás buscando
           </h2>
-          <p className="mt-3 max-w-lg text-base text-muted-foreground">
+          <p className="mt-3 max-w-lg text-base text-primary-foreground/90">
             Un asesor TER te contacta para orientarte sobre proyectos disponibles, metrajes, precios
             y alternativas de financiamiento. Sin compromiso.
           </p>
-          <p className="mt-6 font-display text-2xl text-primary">
-            “Vive a tu manera” empieza con una conversación.
+          <p className="mt-6 font-display text-2xl text-primary-foreground">
+            <span className="text-[#F5CF47]">“Vive a tu manera”</span> empieza con una conversación.
           </p>
         </div>
 
-        <div className="rounded-[2rem] border border-border bg-card p-6 shadow-[var(--shadow-soft)] sm:p-8">
+        <div className="rounded-[2rem] border border-border bg-card p-6 shadow-[var(--shadow-lift)] sm:p-8">
           {sent ? (
             <div role="status" className="py-6 text-center">
               <CheckCircle2 className="mx-auto size-12 text-primary" aria-hidden="true" strokeWidth={1.5} />

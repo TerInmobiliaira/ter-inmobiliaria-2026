@@ -8,7 +8,6 @@ import { LifeStages } from "@/components/ter/LifeStages";
 import { Projects, type ProjectFilter } from "@/components/ter/Projects";
 import { Editorial } from "@/components/ter/Editorial";
 import { Trust } from "@/components/ter/Trust";
-import { LeadMagnet } from "@/components/ter/LeadMagnet";
 import { ContactForm } from "@/components/ter/ContactForm";
 import { Faq, FAQ_ITEMS } from "@/components/ter/Faq";
 import { Footer } from "@/components/ter/Footer";
@@ -114,7 +113,6 @@ function Index() {
         />
         <Editorial />
         <Trust />
-        <LeadMagnet />
         <ContactForm />
         <Faq />
       </main>

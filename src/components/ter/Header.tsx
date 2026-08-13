@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { PHONE } from "@/data/projects";
 import { scrollToId, soon } from "./utils";
+import logoColor from "@/assets/logo-ter-color.png.asset.json";
+import logoWhite from "@/assets/logo-ter-white.png.asset.json";
 
 const NAV = [
-  { label: "Proyectos", target: "proyectos" },
-  { label: "Nosotros", target: "vive" },
-  { label: "Sostenibilidad", target: "confianza" },
-  { label: "Blog", target: null },
-  { label: "Postventa", target: null },
+  { label: "HOME", target: "inicio" },
+  { label: "NOSOTROS", target: null },
+  { label: "REFERIDOS", target: null },
+  { label: "PROYECTOS EN VENTA", target: "proyectos" },
 ] as const;
 
 export function Header() {
@@ -30,33 +31,29 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300 ${
-        scrolled
-          ? "bg-background/90 shadow-[var(--shadow-soft)] backdrop-blur-md"
-          : "bg-background/40 backdrop-blur-sm"
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow] duration-300 motion-reduce:transition-none ${
+        scrolled || open
+          ? "bg-background shadow-[0_1px_12px_rgb(0_0_0/0.06)]"
+          : "bg-transparent"
       }`}
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:py-4">
+      <div className="mx-auto grid h-[68px] max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 sm:px-6 lg:h-[78px]">
         <a
           href="#inicio"
           onClick={(e) => {
             e.preventDefault();
             scrollToId("inicio");
           }}
-          className="flex min-w-0 items-center gap-3 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+          className="flex min-w-0 items-center rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
           aria-label="TER Inmobiliaria, ir al inicio"
         >
-          <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-[image:var(--gradient-teal)] text-lg font-extrabold tracking-tight text-primary-foreground">
-            T
-          </span>
-          <span className="min-w-0">
-            <span className="block truncate text-base font-extrabold tracking-[0.18em] text-foreground">
-              TER
-            </span>
-            <span className="block truncate text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Inmobiliaria
-            </span>
-          </span>
+          <img
+            src={scrolled || open ? logoColor.url : logoWhite.url}
+            alt="TER Inmobiliaria"
+            width={400}
+            height={196}
+            className="h-10 w-auto object-contain transition-opacity duration-300 motion-reduce:transition-none lg:h-12"
+          />
         </a>
 
         <nav aria-label="Principal" className="hidden items-center gap-1 lg:flex">
@@ -65,14 +62,20 @@ export function Header() {
               key={item.label}
               type="button"
               onClick={() => go(item.target, item.label)}
-              className="rounded-full px-3 py-2 text-sm font-semibold text-foreground/80 transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className={`rounded-full px-3 py-2 text-[13px] font-semibold uppercase tracking-wide transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring motion-reduce:transition-none ${
+                scrolled
+                  ? "text-primary hover:text-accent"
+                  : "text-primary-foreground hover:text-accent"
+              }`}
             >
               {item.label}
             </button>
           ))}
           <a
             href="tel:+51981412312"
-            className="ml-2 inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-sm font-semibold text-foreground transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className={`ml-2 inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring motion-reduce:transition-none ${
+              scrolled ? "text-primary" : "text-primary-foreground"
+            }`}
           >
             <Phone className="size-4" aria-hidden="true" />
             {PHONE}
@@ -92,7 +95,11 @@ export function Header() {
           aria-expanded={open}
           aria-controls="menu-movil"
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
-          className="grid size-11 place-items-center rounded-xl border border-border bg-card text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring lg:hidden"
+          className={`grid size-11 place-items-center rounded-xl border focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring lg:hidden ${
+            scrolled || open
+              ? "border-border bg-card text-primary"
+              : "border-primary-foreground/50 bg-transparent text-primary-foreground"
+          }`}
         >
           {open ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
         </button>
