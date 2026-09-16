@@ -9,7 +9,7 @@ const milestones = [
 
 export function Trust() {
   return (
-    <section id="confianza" className="bg-ivory py-16 lg:py-24">
+    <section id="confianza" className="scroll-mt-20 bg-ivory py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-end lg:gap-20">
           <div className="max-w-xl">
