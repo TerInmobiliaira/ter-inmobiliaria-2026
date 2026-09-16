@@ -21,7 +21,6 @@ import bolivar from "@/assets/proj-bolivar.jpg";
 import morar from "@/assets/proj-morar.jpg";
 import marsano from "@/assets/proj-marsano.jpg";
 import pacifico from "@/assets/proj-pacifico.jpg";
-import teo from "@/assets/proj-teo.jpg";
 import montaire from "@/assets/proj-montaire.jpg";
 
 export const projects: Project[] = [
@@ -82,20 +81,6 @@ export const projects: Project[] = [
     lifeStages: ["familia", "invertir"],
   },
   {
-    id: "teo-618",
-    name: "TEO 618",
-    district: "Santa Beatriz",
-    stage: "Lanzamiento",
-    bedrooms: "1 a 2 dorm.",
-    bedroomsMin: 1,
-    bedroomsMax: 2,
-    area: "40 – 48 m²",
-    priceFrom: 258742,
-    image: teo,
-    alt: "Edificio urbano iluminado al anochecer, proyecto TEO 618 en Santa Beatriz, Lima",
-    lifeStages: ["primer", "invertir"],
-  },
-  {
     id: "montaire",
     name: "Montaire",
     district: "Pueblo Libre",
@@ -111,7 +96,7 @@ export const projects: Project[] = [
   },
 ];
 
-export const districts = ["Pueblo Libre", "Surquillo", "Surco", "Santa Beatriz"];
+export const districts = ["Pueblo Libre", "Surquillo", "Surco"];
 export const stages: Stage[] = ["Entrega inmediata", "En construcción", "Lanzamiento"];
 
 export const formatPrice = (value: number) =>

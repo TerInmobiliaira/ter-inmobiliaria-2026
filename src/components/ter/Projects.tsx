@@ -84,7 +84,7 @@ export function Projects({
               Encuentra el proyecto que va contigo
             </h2>
             <p className="mt-3 max-w-xl text-base text-muted-foreground">
-              Seis proyectos en Lima, con distintas etapas de avance y metrajes para cada plan.
+              Cinco proyectos disponibles en Lima, con distintas etapas de avance y metrajes para cada plan.
             </p>
           </div>
           {lifeStage && (

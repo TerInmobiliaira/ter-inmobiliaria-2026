@@ -16,7 +16,8 @@ import { projects, type LifeStage } from "@/data/projects";
 
 const TITLE = "Departamentos en venta en Lima | TER Inmobiliaria";
 const DESCRIPTION =
-  "Departamentos en venta en Lima: Pueblo Libre, Surquillo, Surco y Santa Beatriz. Entrega inmediata, en construcción y lanzamientos. Cotiza tu depa con TER.";
+  "Cinco proyectos de departamentos en venta en Pueblo Libre, Surquillo y Surco. Entrega inmediata, en construcción y lanzamientos. Cotiza tu depa con TER.";
+const SITE_URL = "https://ter-inmobiliaria-2026.lovable.app";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -26,10 +27,10 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: SITE_URL },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: SITE_URL }],
     scripts: [
       {
         type: "application/ld+json",
@@ -39,7 +40,7 @@ export const Route = createFileRoute("/")({
             {
               "@type": "Organization",
               name: "TER Inmobiliaria",
-              url: "/",
+              url: SITE_URL,
               email: "info@terinmobiliaria.com",
               telephone: "+51981412312",
               address: {
@@ -48,7 +49,7 @@ export const Route = createFileRoute("/")({
                 addressCountry: "PE",
               },
             },
-            { "@type": "WebSite", name: "TER Inmobiliaria", url: "/" },
+            { "@type": "WebSite", name: "TER Inmobiliaria", url: SITE_URL },
             {
               "@type": "FAQPage",
               mainEntity: FAQ_ITEMS.map((f) => ({
