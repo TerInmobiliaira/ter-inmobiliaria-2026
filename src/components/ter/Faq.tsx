@@ -1,7 +1,7 @@
 export const FAQ_ITEMS = [
   {
     q: "¿En qué distritos de Lima tiene proyectos TER?",
-    a: "Actualmente contamos con proyectos en Pueblo Libre, Surquillo, Surco y Santa Beatriz, todos en zonas consolidadas y con buena conectividad.",
+    a: "Actualmente contamos con proyectos en Pueblo Libre, Surquillo y Surco, todos en zonas consolidadas y con buena conectividad.",
   },
   {
     q: "¿Qué significa entrega inmediata?",
