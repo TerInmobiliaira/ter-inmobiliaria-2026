@@ -1,4 +1,8 @@
 import { Award, Building2 } from "lucide-react";
+import capecoLogo from "@/assets/institutional/logo-CAPECO.svg.asset.json";
+import codipLogo from "@/assets/institutional/logo-codip-01.svg.asset.json";
+import edgeLogo from "@/assets/institutional/logo-edge-advanced.svg.asset.json";
+import miviviendaLogo from "@/assets/institutional/logo-mivivienda-verde-grado-3-01.svg.asset.json";
 
 const milestones = [
   { value: "9", label: "años de trayectoria" },
@@ -48,7 +52,7 @@ export function Trust() {
         </div>
 
         <div className="mt-14 border-t border-border pt-10 lg:mt-20 lg:pt-12">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.65fr)] lg:gap-16">
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             <div>
               <div className="flex items-center gap-3">
                 <Building2 className="size-5 text-primary" aria-hidden="true" strokeWidth={1.5} />
@@ -56,12 +60,12 @@ export function Trust() {
                   Miembros de
                 </h3>
               </div>
-              <div className="mt-6 grid max-w-2xl grid-cols-2 gap-4" aria-label="Instituciones de las que TER es miembro">
-                <div className="grid min-h-24 place-items-center border border-border bg-card px-5 text-center">
-                  <span className="text-xl font-extrabold text-primary">CODIP</span>
+              <div className="mt-6 grid grid-cols-2 gap-4" aria-label="Instituciones de las que TER es miembro">
+                <div className="grid min-h-28 place-items-center border border-border bg-card px-5 py-4">
+                  <img src={codipLogo.url} alt="CODIP" className="h-14 w-full object-contain" />
                 </div>
-                <div className="grid min-h-24 place-items-center border border-border bg-card px-5 text-center">
-                  <span className="text-xl font-extrabold text-primary">CAPECO</span>
+                <div className="grid min-h-28 place-items-center border border-border bg-card px-5 py-4">
+                  <img src={capecoLogo.url} alt="CAPECO" className="h-14 w-full object-contain" />
                 </div>
               </div>
             </div>
@@ -69,11 +73,20 @@ export function Trust() {
             <div className="border-l-4 border-accent bg-card p-6 sm:p-8">
               <div className="flex items-center gap-3">
                 <Award className="size-6 text-primary" aria-hidden="true" strokeWidth={1.5} />
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">
-                    Certificación
-                  </p>
-                  <h3 className="mt-1 text-xl font-extrabold text-foreground">EDGE Advanced</h3>
+                <h3 className="text-sm font-bold uppercase tracking-[0.18em] text-foreground">
+                  Certificaciones
+                </h3>
+              </div>
+              <div className="mt-6 grid grid-cols-2 gap-4" aria-label="Certificaciones de proyectos TER">
+                <div className="grid min-h-28 place-items-center border border-border bg-background px-4 py-4">
+                  <img src={edgeLogo.url} alt="EDGE Advanced" className="h-16 w-full object-contain" />
+                </div>
+                <div className="grid min-h-28 place-items-center border border-border bg-background px-4 py-4">
+                  <img
+                    src={miviviendaLogo.url}
+                    alt="MiVivienda Verde Grado 3"
+                    className="h-16 w-full object-contain"
+                  />
                 </div>
               </div>
               <p className="mt-5 text-xs leading-relaxed text-muted-foreground">

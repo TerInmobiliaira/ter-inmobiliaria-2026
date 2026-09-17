@@ -1,11 +1,41 @@
-import { useState } from "react";
-import { Search } from "lucide-react";
-import heroImg from "@/assets/hero.jpg";
+import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight, Search } from "lucide-react";
+import slide01Desktop from "@/assets/home-slides/home-slide-01-desktop.jpg.asset.json";
+import slide01Mobile from "@/assets/home-slides/home-slide-01-mobile.jpg.asset.json";
+import slide02Desktop from "@/assets/home-slides/home-slide-02-desktop.jpg.asset.json";
+import slide02Mobile from "@/assets/home-slides/home-slide-02-mobile.jpg.asset.json";
+import slide03Desktop from "@/assets/home-slides/home-slide-03-desktop.jpg.asset.json";
+import slide03Mobile from "@/assets/home-slides/home-slide-03-mobile.jpg.asset.json";
+import slide04Desktop from "@/assets/home-slides/home-slide-04-desktop.jpg.asset.json";
+import slide04Mobile from "@/assets/home-slides/home-slide-04-mobile.jpg.asset.json";
 import { districts, stages } from "@/data/projects";
 import { scrollToId } from "./utils";
 
 const selectClass =
   "min-h-12 w-full rounded-xl border border-border bg-card px-3 text-sm font-semibold text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
+
+const slides = [
+  {
+    desktop: slide01Desktop.url,
+    mobile: slide01Mobile.url,
+    alt: "Edificio residencial TER de ladrillo con balcones, jardines y áreas comunes exteriores",
+  },
+  {
+    desktop: slide02Desktop.url,
+    mobile: slide02Mobile.url,
+    alt: "Lobby cálido TER con mesas de trabajo, luminarias y amplios ventanales",
+  },
+  {
+    desktop: slide03Desktop.url,
+    mobile: slide03Mobile.url,
+    alt: "Sala y cocina integrada de un departamento TER con una pareja disfrutando el espacio",
+  },
+  {
+    desktop: slide04Desktop.url,
+    mobile: slide04Mobile.url,
+    alt: "Gimnasio moderno TER con máquinas, ventanales y equipamiento contemporáneo",
+  },
+] as const;
 
 export interface SearchValues {
   district: string;
@@ -15,16 +45,44 @@ export interface SearchValues {
 
 export function Hero({ onSearch }: { onSearch: (v: SearchValues) => void }) {
   const [values, setValues] = useState<SearchValues>({ district: "", bedrooms: "", stage: "" });
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) return;
+    const timer = window.setInterval(
+      () => setActiveSlide((current) => (current + 1) % slides.length),
+      6500,
+    );
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const showPrevious = () =>
+    setActiveSlide((current) => (current - 1 + slides.length) % slides.length);
+  const showNext = () => setActiveSlide((current) => (current + 1) % slides.length);
 
   return (
     <section id="inicio" className="relative isolate overflow-hidden">
-      <img
-        src={heroImg}
-        alt="Fachada iluminada de un edificio residencial moderno en Lima al atardecer"
-        width={1600}
-        height={1104}
-        className="absolute inset-0 size-full object-cover"
-      />
+      <div className="absolute inset-0" aria-live="off">
+        {slides.map((slide, index) => (
+          <picture
+            key={slide.desktop}
+            className={`absolute inset-0 transition-opacity duration-700 motion-reduce:transition-none ${
+              activeSlide === index ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <source media="(min-width: 768px)" srcSet={slide.desktop} />
+            <img
+              src={slide.mobile}
+              alt={activeSlide === index ? slide.alt : ""}
+              width={1920}
+              height={1080}
+              fetchPriority={index === 0 ? "high" : "auto"}
+              className="size-full object-cover object-center"
+            />
+          </picture>
+        ))}
+      </div>
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" aria-hidden="true" />
       <div className="relative mx-auto max-w-7xl px-4 pb-14 pt-28 sm:px-6 lg:pb-24 lg:pt-40">
         <p className="text-xs font-bold uppercase tracking-[0.28em] text-gold">
@@ -128,6 +186,41 @@ export function Hero({ onSearch }: { onSearch: (v: SearchValues) => void }) {
             </div>
           </div>
         </form>
+        <div className="mt-5 flex items-center justify-between gap-4" aria-label="Controles de portadas">
+          <div className="flex gap-2" role="tablist" aria-label="Seleccionar portada">
+            {slides.map((slide, index) => (
+              <button
+                key={slide.desktop}
+                type="button"
+                role="tab"
+                aria-selected={activeSlide === index}
+                aria-label={`Mostrar portada ${index + 1}`}
+                onClick={() => setActiveSlide(index)}
+                className={`h-1.5 rounded-full transition-[width,background-color] duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring motion-reduce:transition-none ${
+                  activeSlide === index ? "w-10 bg-gold" : "w-5 bg-primary-foreground/60"
+                }`}
+              />
+            ))}
+          </div>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={showPrevious}
+              aria-label="Portada anterior"
+              className="grid size-11 place-items-center rounded-full border border-primary-foreground/50 text-primary-foreground transition-colors hover:bg-primary-foreground/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            >
+              <ChevronLeft className="size-5" aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={showNext}
+              aria-label="Portada siguiente"
+              className="grid size-11 place-items-center rounded-full border border-primary-foreground/50 text-primary-foreground transition-colors hover:bg-primary-foreground/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            >
+              <ChevronRight className="size-5" aria-hidden="true" />
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );

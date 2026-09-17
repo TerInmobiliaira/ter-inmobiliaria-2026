@@ -57,8 +57,8 @@ export function ContactForm() {
             Un asesor TER te contacta para orientarte sobre proyectos disponibles, metrajes, precios
             y alternativas de financiamiento. Sin compromiso.
           </p>
-          <p className="mt-6 font-display text-2xl text-primary-foreground">
-            <span className="text-[#F5CF47]">“Vive a tu manera”</span> empieza con una conversación.
+          <p className="mt-6 text-2xl text-primary-foreground">
+            <span className="font-display text-gold">“Vive a tu manera”</span> empieza con una conversación.
           </p>
         </div>
 
