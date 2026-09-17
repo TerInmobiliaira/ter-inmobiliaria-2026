@@ -1,6 +1,9 @@
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { EMAIL, PHONE, projects } from "@/data/projects";
 import { scrollToId, soon } from "./utils";
+import terLogo from "@/assets/institutional/logo-ter-oficial.svg.asset.json";
+import codipLogo from "@/assets/institutional/logo-codip-01.svg.asset.json";
+import capecoLogo from "@/assets/institutional/logo-CAPECO.svg.asset.json";
 
 function SoonLink({ label }: { label: string }) {
   return (
@@ -20,17 +23,11 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid gap-10 lg:grid-cols-4">
           <div>
-            <div className="flex items-center gap-3">
-              <span className="grid size-11 place-items-center rounded-xl bg-[image:var(--gradient-teal)] text-lg font-extrabold">
-                T
-              </span>
-              <span>
-                <span className="block text-base font-extrabold tracking-[0.18em]">TER</span>
-                <span className="block text-[11px] uppercase tracking-[0.22em] text-primary-foreground/70">
-                  Inmobiliaria
-                </span>
-              </span>
-            </div>
+            <img
+              src={terLogo.url}
+              alt="TER Inmobiliaria"
+              className="h-16 w-full max-w-52 object-contain object-left"
+            />
             <p className="mt-4 max-w-xs text-sm text-primary-foreground/75">
               Departamentos en Lima pensados para que vivas a tu manera.
             </p>
@@ -50,6 +47,17 @@ export function Footer() {
                 Lima, Perú
               </li>
             </ul>
+            <div className="mt-6 border-t border-primary-foreground/15 pt-5">
+              <p className="text-xs font-bold uppercase tracking-wider text-gold">Miembros de</p>
+              <div className="mt-3 flex items-center gap-4">
+                <div className="grid h-12 w-24 place-items-center bg-primary-foreground px-2 py-1.5">
+                  <img src={codipLogo.url} alt="CODIP" className="size-full object-contain" />
+                </div>
+                <div className="grid h-12 w-24 place-items-center bg-primary-foreground px-2 py-1.5">
+                  <img src={capecoLogo.url} alt="CAPECO" className="size-full object-contain" />
+                </div>
+              </div>
+            </div>
           </div>
 
           <nav aria-label="Navegación del pie">
