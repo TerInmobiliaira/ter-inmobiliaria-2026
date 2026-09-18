@@ -8,21 +8,21 @@ export type ProjectFilter = (typeof FILTERS)[number];
 function ProjectCard({ project }: { project: Project }) {
   return (
     <li className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
-      <div className="relative aspect-[4/3] overflow-hidden">
+      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
         <img
           src={project.image}
           alt={project.alt}
           loading="lazy"
           width={1200}
           height={900}
-          className="size-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+          className="size-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.035] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
         />
         <span className="absolute left-4 top-4 rounded-full bg-card/95 px-3 py-1 text-xs font-bold text-foreground shadow-[var(--shadow-soft)]">
           {project.stage}
         </span>
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="text-xl font-extrabold tracking-tight text-foreground">{project.name}</h3>
+        <h3 className="text-xl font-semibold text-foreground">{project.name}</h3>
         <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
           <MapPin className="size-4 shrink-0" aria-hidden="true" strokeWidth={1.5} />
           {project.district}, Lima
@@ -45,7 +45,7 @@ function ProjectCard({ project }: { project: Project }) {
         </dl>
         <p className="mt-5 text-sm text-muted-foreground">
           Desde{" "}
-          <strong className="text-lg font-extrabold text-foreground">
+          <strong className="text-lg font-semibold text-foreground">
             {formatPrice(project.priceFrom)}
           </strong>
         </p>
@@ -80,7 +80,7 @@ export function Projects({
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <div className="min-w-0">
-            <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="max-w-2xl text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
               Encuentra el proyecto que va contigo
             </h2>
             <p className="mt-3 max-w-xl text-base text-muted-foreground">

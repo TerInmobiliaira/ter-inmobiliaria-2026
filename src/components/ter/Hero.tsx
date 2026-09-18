@@ -19,21 +19,25 @@ const slides = [
     desktop: slide01Desktop.url,
     mobile: slide01Mobile.url,
     alt: "Edificio residencial TER de ladrillo con balcones, jardines y áreas comunes exteriores",
+    motion: "hero-pan-right",
   },
   {
     desktop: slide02Desktop.url,
     mobile: slide02Mobile.url,
     alt: "Lobby cálido TER con mesas de trabajo, luminarias y amplios ventanales",
+    motion: "hero-pan-left",
   },
   {
     desktop: slide03Desktop.url,
     mobile: slide03Mobile.url,
     alt: "Sala y cocina integrada de un departamento TER con una pareja disfrutando el espacio",
+    motion: "hero-pan-right",
   },
   {
     desktop: slide04Desktop.url,
     mobile: slide04Mobile.url,
     alt: "Gimnasio moderno TER con máquinas, ventanales y equipamiento contemporáneo",
+    motion: "hero-pan-left",
   },
 ] as const;
 
@@ -78,19 +82,18 @@ export function Hero({ onSearch }: { onSearch: (v: SearchValues) => void }) {
               width={1920}
               height={1080}
               fetchPriority={index === 0 ? "high" : "auto"}
-              className="size-full object-cover object-center"
+              className={`size-full object-cover object-center motion-reduce:transform-none motion-reduce:animate-none ${
+                activeSlide === index ? slide.motion : ""
+              }`}
             />
           </picture>
         ))}
       </div>
       <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" aria-hidden="true" />
       <div className="relative mx-auto max-w-7xl px-4 pb-14 pt-28 sm:px-6 lg:pb-24 lg:pt-40">
-        <p className="text-xs font-bold uppercase tracking-[0.28em] text-gold">
-          Departamentos en Lima
-        </p>
-        <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight text-primary-foreground sm:text-5xl lg:text-6xl">
-          Un depa para vivir{" "}
-          <em className="font-display font-normal not-italic text-gold">a tu manera.</em>
+        <h1 className="max-w-[19ch] text-[2.35rem] font-semibold uppercase leading-[1.08] text-primary-foreground sm:text-5xl lg:text-[4.15rem] lg:leading-[1.04]">
+          <span className="block">Hay un depa pensado</span>
+          <span className="block text-gold">para tu momento.</span>
         </h1>
         <p className="mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/85 sm:text-lg">
           Encuentra espacios pensados para tu estilo de vida, en ubicaciones que te conectan con lo

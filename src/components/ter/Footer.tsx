@@ -21,12 +21,12 @@ export function Footer() {
   return (
     <footer className="bg-foreground pb-28 pt-16 text-primary-foreground lg:pb-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="grid gap-10 lg:grid-cols-4">
-          <div>
+        <div className="grid gap-x-10 gap-y-14 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1fr_1fr]">
+          <div className="lg:pr-8">
             <img
               src={terLogo.url}
               alt="TER Inmobiliaria"
-              className="h-16 w-full max-w-52 object-contain object-left"
+               className="h-16 w-full max-w-52 object-contain object-left brightness-0 invert"
             />
             <p className="mt-4 max-w-xs text-sm text-primary-foreground/75">
               Departamentos en Lima pensados para que vivas a tu manera.
@@ -47,21 +47,18 @@ export function Footer() {
                 Lima, Perú
               </li>
             </ul>
-            <div className="mt-6 border-t border-primary-foreground/15 pt-5">
-              <p className="text-xs font-bold uppercase tracking-wider text-gold">Miembros de</p>
-              <div className="mt-3 flex items-center gap-4">
-                <div className="grid h-12 w-24 place-items-center bg-primary-foreground px-2 py-1.5">
-                  <img src={codipLogo.url} alt="CODIP" className="size-full object-contain" />
-                </div>
-                <div className="grid h-12 w-24 place-items-center bg-primary-foreground px-2 py-1.5">
-                  <img src={capecoLogo.url} alt="CAPECO" className="size-full object-contain" />
-                </div>
+            <div className="mt-8 border-t border-primary-foreground/15 pt-6">
+              <p className="text-xs font-semibold uppercase tracking-wider text-gold">Miembros de</p>
+              <div className="mt-5 flex min-h-10 items-center gap-7">
+                <img src={codipLogo.url} alt="CODIP" className="h-9 w-auto max-w-24 object-contain brightness-0 invert" />
+                <span className="h-8 w-px bg-primary-foreground/20" aria-hidden="true" />
+                <img src={capecoLogo.url} alt="CAPECO" className="h-9 w-auto max-w-24 object-contain brightness-0 invert" />
               </div>
             </div>
           </div>
 
           <nav aria-label="Navegación del pie">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-gold">Navegación</h2>
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-gold">Navegación</h2>
             <ul className="mt-3 flex flex-col">
               <li>
                 <button
@@ -106,7 +103,7 @@ export function Footer() {
           </nav>
 
           <nav aria-label="Proyectos">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-gold">Proyectos</h2>
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-gold">Proyectos</h2>
             <ul className="mt-3 flex flex-col">
               {projects.map((p) => (
                 <li key={p.id}>
@@ -123,7 +120,7 @@ export function Footer() {
           </nav>
 
           <nav aria-label="Atención al cliente">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-gold">Atención</h2>
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-gold">Atención</h2>
             <ul className="mt-3 flex flex-col">
               <li>
                 <SoonLink label="Postventa" />
