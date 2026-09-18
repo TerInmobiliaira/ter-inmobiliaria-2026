@@ -20,7 +20,7 @@ export const FAQ_ITEMS = [
 export function Faq() {
   return (
     <section id="faq" className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-24">
-      <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+      <h2 className="text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
         Preguntas frecuentes
       </h2>
       <div className="mt-8 space-y-3">

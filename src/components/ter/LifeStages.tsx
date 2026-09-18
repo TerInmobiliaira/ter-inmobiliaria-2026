@@ -39,7 +39,7 @@ export function LifeStages({
   return (
     <section id="etapa" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
       <div className="max-w-2xl">
-        <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+        <h2 className="text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
           ¿Cómo quieres vivir esta etapa?
         </h2>
         <p className="mt-3 text-base text-muted-foreground">

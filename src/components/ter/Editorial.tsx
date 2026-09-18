@@ -34,10 +34,10 @@ export function Editorial() {
           />
         </div>
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.28em] text-primary">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
             Vive a tu manera
           </p>
-          <h2 className="mt-4 font-display text-3xl leading-tight text-foreground sm:text-[2.75rem]">
+          <h2 className="mt-4 max-w-xl font-display text-3xl font-medium leading-[1.25] text-foreground sm:text-[2.6rem]">
             No todos buscamos lo mismo en un hogar. Por eso creamos espacios que se adaptan a tus
             planes, tu ritmo y tu manera de vivir.
           </h2>

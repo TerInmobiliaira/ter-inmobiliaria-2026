@@ -50,7 +50,7 @@ export function ContactForm() {
       />
       <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16">
         <div>
-          <h2 className="text-3xl font-extrabold tracking-tight text-primary-foreground sm:text-4xl">
+          <h2 className="max-w-xl text-3xl font-semibold leading-tight text-primary-foreground sm:text-4xl">
             Cuéntanos qué depa estás buscando
           </h2>
           <p className="mt-3 max-w-lg text-base text-primary-foreground/90">
@@ -58,7 +58,7 @@ export function ContactForm() {
             y alternativas de financiamiento. Sin compromiso.
           </p>
           <p className="mt-6 text-2xl text-primary-foreground">
-            <span className="font-display text-gold">“Vive a tu manera”</span> empieza con una conversación.
+            <span className="font-display font-medium text-gold">“Vive a tu manera”</span> empieza con una conversación.
           </p>
         </div>
 
@@ -66,7 +66,7 @@ export function ContactForm() {
           {sent ? (
             <div role="status" className="py-6 text-center">
               <CheckCircle2 className="mx-auto size-12 text-primary" aria-hidden="true" strokeWidth={1.5} />
-              <h3 className="mt-4 text-xl font-extrabold text-foreground">¡Gracias, {name}!</h3>
+              <h3 className="mt-4 text-xl font-semibold text-foreground">¡Gracias, {name}!</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 Registro de demostración: un asesor te escribiría al {phone} dentro de las próximas
                 24 horas hábiles.
