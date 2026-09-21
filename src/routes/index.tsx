@@ -67,13 +67,11 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [filter, setFilter] = useState<ProjectFilter>("Todos");
-  const [lifeStage, setLifeStage] = useState<LifeStage | null>(null);
   const [search, setSearch] = useState<SearchValues>({ district: "", bedrooms: "", stage: "" });
 
   const visible = useMemo(() => {
     return projects.filter((p) => {
       if (filter !== "Todos" && p.stage !== filter) return false;
-      if (lifeStage && !p.lifeStages.includes(lifeStage)) return false;
       if (search.district && p.district !== search.district) return false;
       if (search.stage && p.stage !== search.stage) return false;
       if (search.bedrooms) {
@@ -83,16 +81,11 @@ function Index() {
       }
       return true;
     });
-  }, [filter, lifeStage, search]);
+  }, [filter, search]);
 
   const handleSearch = (values: SearchValues) => {
     setSearch(values);
     setFilter(values.stage ? (values.stage as ProjectFilter) : "Todos");
-  };
-
-  const handleStage = (stage: LifeStage | null) => {
-    setLifeStage(stage);
-    setFilter(stage === "pronto" ? "Entrega inmediata" : "Todos");
   };
 
   return (
@@ -100,7 +93,6 @@ function Index() {
       <Header />
       <main>
         <Hero onSearch={handleSearch} />
-        <LifeStages value={lifeStage} onChange={handleStage} />
         <Projects
           projects={visible}
           filter={filter}
@@ -108,8 +100,6 @@ function Index() {
             setFilter(f);
             setSearch((s) => ({ ...s, stage: "" }));
           }}
-          lifeStage={lifeStage}
-          onClearStage={() => setLifeStage(null)}
         />
         <Editorial />
         <Trust />
