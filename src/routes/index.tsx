@@ -4,7 +4,6 @@ import { Toaster } from "sonner";
 
 import { Header } from "@/components/ter/Header";
 import { Hero, type SearchValues } from "@/components/ter/Hero";
-import { LifeStages } from "@/components/ter/LifeStages";
 import { Projects, type ProjectFilter } from "@/components/ter/Projects";
 import { Editorial } from "@/components/ter/Editorial";
 import { Trust } from "@/components/ter/Trust";
@@ -12,7 +11,7 @@ import { ContactForm } from "@/components/ter/ContactForm";
 import { Faq, FAQ_ITEMS } from "@/components/ter/Faq";
 import { Footer } from "@/components/ter/Footer";
 import { StickyCta } from "@/components/ter/StickyCta";
-import { projects, type LifeStage } from "@/data/projects";
+import { projects } from "@/data/projects";
 
 const TITLE = "Departamentos en venta en Lima | TER Inmobiliaria";
 const DESCRIPTION =
@@ -68,13 +67,11 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [filter, setFilter] = useState<ProjectFilter>("Todos");
-  const [lifeStage, setLifeStage] = useState<LifeStage | null>(null);
   const [search, setSearch] = useState<SearchValues>({ district: "", bedrooms: "", stage: "" });
 
   const visible = useMemo(() => {
     return projects.filter((p) => {
       if (filter !== "Todos" && p.stage !== filter) return false;
-      if (lifeStage && !p.lifeStages.includes(lifeStage)) return false;
       if (search.district && p.district !== search.district) return false;
       if (search.stage && p.stage !== search.stage) return false;
       if (search.bedrooms) {
@@ -84,16 +81,11 @@ function Index() {
       }
       return true;
     });
-  }, [filter, lifeStage, search]);
+  }, [filter, search]);
 
   const handleSearch = (values: SearchValues) => {
     setSearch(values);
     setFilter(values.stage ? (values.stage as ProjectFilter) : "Todos");
-  };
-
-  const handleStage = (stage: LifeStage | null) => {
-    setLifeStage(stage);
-    setFilter(stage === "pronto" ? "Entrega inmediata" : "Todos");
   };
 
   return (
@@ -101,7 +93,6 @@ function Index() {
       <Header />
       <main>
         <Hero onSearch={handleSearch} />
-        <LifeStages value={lifeStage} onChange={handleStage} />
         <Projects
           projects={visible}
           filter={filter}
@@ -109,8 +100,6 @@ function Index() {
             setFilter(f);
             setSearch((s) => ({ ...s, stage: "" }));
           }}
-          lifeStage={lifeStage}
-          onClearStage={() => setLifeStage(null)}
         />
         <Editorial />
         <Trust />

@@ -66,14 +66,14 @@ export function Projects({
   projects,
   filter,
   onFilterChange,
-  lifeStage,
-  onClearStage,
+  lifeStage = null,
+  onClearStage = () => {},
 }: {
   projects: Project[];
   filter: ProjectFilter;
   onFilterChange: (f: ProjectFilter) => void;
-  lifeStage: LifeStage | null;
-  onClearStage: () => void;
+  lifeStage?: LifeStage | null;
+  onClearStage?: () => void;
 }) {
   return (
     <section id="proyectos" className="bg-ivory/60 py-16 lg:py-24">
