@@ -4,7 +4,6 @@ import { Toaster } from "sonner";
 
 import { Header } from "@/components/ter/Header";
 import { Hero, type SearchValues } from "@/components/ter/Hero";
-import { LifeStages } from "@/components/ter/LifeStages";
 import { Projects, type ProjectFilter } from "@/components/ter/Projects";
 import { Editorial } from "@/components/ter/Editorial";
 import { Trust } from "@/components/ter/Trust";
@@ -12,7 +11,7 @@ import { ContactForm } from "@/components/ter/ContactForm";
 import { Faq, FAQ_ITEMS } from "@/components/ter/Faq";
 import { Footer } from "@/components/ter/Footer";
 import { StickyCta } from "@/components/ter/StickyCta";
-import { projects, type LifeStage } from "@/data/projects";
+import { projects } from "@/data/projects";
 
 const TITLE = "Departamentos en venta en Lima | TER Inmobiliaria";
 const DESCRIPTION =
