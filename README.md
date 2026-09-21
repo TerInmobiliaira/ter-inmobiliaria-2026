@@ -1,4 +1,4 @@
-# Vive Tu Espacio
+# Vive a tú manera
 
 Crea un proyecto privado llamado “TER Home 2026 — Propuesta 1” y desarrolla SOLO el Home responsive de TER Inmobiliaria (Lima, Perú). No publiques ni crees páginas internas, backend, CRM, login o base de datos.
 
